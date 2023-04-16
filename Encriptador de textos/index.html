@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Encriptador de textos</title>
+    <style>
+        input[type="text"] {
+            padding: 5px;
+            margin: 10px;
+            width: 300px;
+        }
+
+        button {
+            padding: 5px;
+            margin: 10px;
+        }
+
+        #resultado {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Encriptador de textos</h1>
+    <label>Texto a encriptar:</label>
+    <input type="text" id="texto-cifrar">
+    <button onclick="cifrar()">Encriptar</button>
+    <label>Texto a desencriptar:</label>
+    <input type="text" id="texto-descifrar">
+    <button onclick="descifrar()">Desencriptar</button>
+    <p id="resultado"></p>
+    <script>
+        function cifrar() {
+            var texto = document.getElementById("texto-cifrar").value;
+            var alfabeto = "abcdefghijklmnopqrstuvwxyz";
+            var cifrado = "defghijklmnopqrstuvwxyzabc";
+            var resultado = "";
+            for (var i = 0; i < texto.length; i++) {
+                var letra = texto[i];
+                var indice = alfabeto.indexOf(letra);
+                if (indice >= 0) {
+                    resultado += cifrado[indice];
+                } else {
+                    resultado += letra;
+                }
+            }
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+
+        function descifrar() {
+            var texto = document.getElementById("texto-descifrar").value;
+            var alfabeto = "abcdefghijklmnopqrstuvwxyz";
+            var cifrado = "defghijklmnopqrstuvwxyzabc";
+            var resultado = "";
+            for (var i = 0; i < texto.length; i++) {
+                var letra = texto[i];
+                var indice = cifrado.indexOf(letra);
+                if (indice >= 0) {
+                    resultado += alfabeto[indice];
+                } else {
+                    resultado += letra;
+                }
+            }
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+
+    </script>
+</body>
+
+</html>
